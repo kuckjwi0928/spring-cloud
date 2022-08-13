@@ -17,7 +17,7 @@ class EchoController {
   fun echo(request: HttpServletRequest): String {
     // B3 propagation check
     log.info("x-b3-traceid: {}", request.getHeader("x-b3-traceid"))
-    log.info("x-b3-parentspanid:: {}", request.getHeader("x-b3-parentspanid"))
+    log.info("x-b3-parentspanid: {}", request.getHeader("x-b3-parentspanid"))
     log.info("x-b3-spanid: {}", request.getHeader("x-b3-spanid"))
     return "echo"
   }
