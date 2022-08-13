@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest
 
 @RestController
 @RequestMapping("/echo")
-class EchoController(private val tracer: Tracer) {
+class EchoController {
   private val log: Logger = LoggerFactory.getLogger(EchoController::class.java)
 
   @GetMapping
