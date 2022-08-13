@@ -23,7 +23,7 @@ spec:
           envFrom:
             - configMapRef:
                 name: {{ include "eureka.fullname" . }}-cm
-{{/*          livenessProbe:*/}}
-{{/*            httpGet:*/}}
-{{/*              path: /*/}}
-{{/*              port: http*/}}
+          livenessProbe:
+            httpGet:
+              path: /actuator/health
+              port: {{ .Values.application.config.port }}
