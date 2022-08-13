@@ -1,0 +1,7 @@
+# application configurations
+application:
+  config:
+    port: 8761
+
+# image
+image: eureka

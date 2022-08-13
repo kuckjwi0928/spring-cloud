@@ -1,0 +1,22 @@
+server:
+  port: ${PORT:9998}
+
+spring:
+  application:
+    name: gateway
+  cloud:
+    gateway:
+      routes:
+        - id: "echo"
+          uri: ${ECHO_SERVER_URL:http://localhost:9997}
+          predicates:
+            - Path=/echo
+  zipkin:
+    base-url: ${ZIPKIN_URL:http://localhost:9411}
+  sleuth:
+    sampler:
+      probability: 10
+eureka:
+  client:
+    service-url:
+      defaultZone: ${EUREKA_URL:http://localhost:9999/eureka}

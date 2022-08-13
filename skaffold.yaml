@@ -1,0 +1,41 @@
+apiVersion: skaffold/v2beta26
+kind: Config
+deploy:
+  helm:
+    releases:
+      - name: "zipkin"
+        createNamespace: true
+        namespace: zipkin
+        remoteChart: openzipkin/zipkin
+      - name: "eureka"
+        createNamespace: true
+        namespace: eureka
+        chartPath: ./deployments/eureka
+        artifactOverrides:
+          image: eureka
+      - name: "gateway"
+        createNamespace: true
+        namespace: gateway
+        chartPath: ./deployments/gateway
+        artifactOverrides:
+          image: gateway
+      - name: "echo-server"
+        createNamespace: true
+        namespace: echo-server
+        chartPath: ./deployments/echo-server
+        artifactOverrides:
+          image: echo-server
+build:
+  artifacts:
+    - image: eureka
+      context: .
+      jib:
+        project: "eureka"
+    - image: gateway
+      context: .
+      jib:
+        project: "gateway"
+    - image: echo-server
+      context: .
+      jib:
+        project: "echo-server"

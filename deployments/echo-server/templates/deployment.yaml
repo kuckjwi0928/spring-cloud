@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "echo-server.fullname" . }}-deployment
+  labels:
+    {{- include "echo-server.labels" . | nindent 4 }}
+spec:
+  selector:
+    matchLabels:
+      {{- include "echo-server.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "echo-server.selectorLabels" . | nindent 8 }}
+    spec:
+      containers:
+        - name: {{ .Chart.Name }}
+          image: {{ .Values.image }}
+          ports:
+            - name: http
+              containerPort: {{ .Values.application.config.port }}
+              protocol: TCP
+          envFrom:
+            - configMapRef:
+                name: {{ include "echo-server.fullname" . }}-cm
+{{/*          livenessProbe:*/}}
+{{/*            httpGet:*/}}
+{{/*              path: /*/}}
+{{/*              port: http*/}}

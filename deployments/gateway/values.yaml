@@ -1,0 +1,9 @@
+# application configurations
+application:
+  config:
+    port: 8080
+    zipkin_url: http://zipkin.zipkin.svc.cluster.local:9411
+    eureka_url: http://eureka-svc.eureka.svc.cluster.local:8761/eureka
+    echo_server_url: http://echo-server-svc.echo-server.svc.cluster.local:8080
+# image
+image: gateway

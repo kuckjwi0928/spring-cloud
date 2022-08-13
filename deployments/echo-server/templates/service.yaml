@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "echo-server.fullname" . }}-svc
+  labels:
+    {{- include "echo-server.labels" . | nindent 4 }}
+spec:
+  type: ClusterIP
+  ports:
+    - port: {{ .Values.application.config.port }}
+      targetPort: {{ .Values.application.config.port }}
+      name: http
+  selector:
+    {{- include "echo-server.selectorLabels" . | nindent 4 }}
