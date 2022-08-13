@@ -1,15 +1,15 @@
 # Kubernetes with Spring Cloud exercise (eureka, gateway, zipkin, sleuth) 
-# Prerequisites
+## Prerequisites
 ```
 brew install helm
 brew install skaffold
 helm repo add openzipkin https://openzipkin.github.io/zipkin
 ```
-# Debug on kubernetes
+## Debug on kubernetes
 ```shell
 skaffold dev
 ```
-# Run on kubernetes
+## Run on kubernetes
 ```shell
 skaffold run
 ```
